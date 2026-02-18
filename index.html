@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Escursioni Sialpinistiche Gruppo Manzini - CAI Reggio Emilia</title>
+    <meta charset="utf-8" />
+
+    <link rel="icon" type="image/png" href="gruppo_manzini.png">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        #map {
+            height: 100vh;
+        }
+
+ #logo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 100px;
+    height: 100px;
+    z-index: 1000;
+}
+
+#logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+        #logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .popup-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .elevation-highlight {
+            font-size: 14px;
+            font-weight: bold;
+            color: #c0392b;
+        }
+
+        canvas {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="logo">
+    <img src="gruppo_manzini.png" alt="Logo">
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+
+
+var map = L.map('map').setView([45.0, 10.0], 8);
+
+
+
+
+function mostraDescrizione(id) {
+
+    var testo = window["descrizione_" + id];
+
+    if (!testo || testo === "-") {
+        testo = "Nessuna descrizione disponibile";
+    }
+
+    L.popup({
+        maxWidth: 400
+    })
+    .setLatLng(map.getCenter())
+    .setContent("<b>Descrizione escursione</b><br><br>" + testo)
+    .addTo(map);
+}
+
+
+
+
+
+
+
+
+// OpenTopoMap
+L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors | © OpenTopoMap',
+    maxZoom: 17
+}).addTo(map);
+
+
+// Icone personalizzate
+var startIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32]
+});
+
+var endIcon = L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/149/149059.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32]
+});
+
+
+fetch("escursioni/escursioni.json")
+    .then(response => response.json())
+    .then(data => {
+
+        data.escursioni.forEach(function(item, index) {
+
+            var file = "escursioni/" + item.file;
+
+            caricaGPX(file, index);
+
+        });
+
+    });
+
+
+
+
+
+function caricaGPX(file, index) {
+
+    var gpx = new L.GPX(file, {
+        async: true,
+        marker_options: {
+            startIcon: startIcon,
+            endIcon: endIcon
+        }
+    }).on('loaded', function(e) {
+
+        var titolo = e.target.get_name() || "Escursione";
+        var distanza = (e.target.get_distance() / 1000).toFixed(2);
+        var ascesa = e.target.get_elevation_gain().toFixed(0);
+        var discesa = e.target.get_elevation_loss().toFixed(0);
+
+        var points = e.target.get_elevation_data();
+        var distData = [];
+        var elevData = [];
+
+        for (var i = 0; i < points.length; i++) {
+            distData.push((points[i][0] / 1).toFixed(2));
+            elevData.push(points[i][1]);
+        }
+
+        var chartId = "chart" + index;
+
+        var startTime = e.target.get_start_time();
+        var endTime = e.target.get_end_time();
+
+        function formatDate(d) {
+            if (!d) return "-";
+            return d.toLocaleDateString() + " " +
+                   d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+
+        var elevationData = e.target.get_elevation_data();
+
+        var altStart = "-";
+        var altEnd = "-";
+
+        if (elevationData && elevationData.length > 0) {
+            altStart = elevationData[0][1].toFixed(0);
+            altEnd = elevationData[elevationData.length - 1][1].toFixed(0);
+        }
+
+        var commento = "-";
+
+        fetch(file)
+            .then(response => response.text())
+            .then(xmlText => {
+
+                var parser = new DOMParser();
+                var xml = parser.parseFromString(xmlText, "text/xml");
+
+                var trk = xml.getElementsByTagName("trk")[0];
+                if (trk) {
+                    var desc = trk.getElementsByTagName("desc")[0];
+                    if (desc && desc.textContent.trim() !== "") {
+                        commento = desc.textContent.trim();
+                    }
+                }
+
+                window["descrizione_" + index] = commento;
+
+                creaPopup();
+            });
+
+        function creaPopup() {
+
+            var popupContent = `
+                <div class="popup-title">${titolo}</div>
+
+                <div>🕒 Inizio: ${formatDate(startTime)} 📍 q. ${altStart} m</div>
+                <div>🕒 Fine: ${formatDate(endTime)} 🏁 q. ${altEnd} m</div>
+
+                📏 Distanza: ${distanza} km<br>
+
+                <div class="elevation-highlight">
+                    ⛰ Ascesa: ${ascesa} m
+                </div>
+
+                <div>⬇ Discesa: ${discesa} m</div>
+
+                <div>
+                    <a href="#" onclick="mostraDescrizione(${index}); return false;">
+                        📖 Leggi descrizione e note
+                    </a>
+                </div>
+
+                <canvas id="${chartId}" width="250" height="120"></canvas>
+                <br>
+                <a href="${file}" download>⬇ Scarica GPX</a>
+            `;
+
+            e.target.bindPopup(popupContent);
+        }
+
+        e.target.on("popupopen", function() {
+
+            new Chart(document.getElementById(chartId), {
+                type: 'line',
+                data: {
+                    labels: distData,
+                    datasets: [{
+                        data: elevData,
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: {
+                            ticks: { maxTicksLimit: 4 },
+                            title: { display: true, text: 'Distanza (km)' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Altitudine (m)' }
+                        }
+                    }
+                }
+            });
+
+        });
+
+    }).addTo(map);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+escursioni.forEach(function(file, index) {
+
+    var gpx = new L.GPX(file, {
+        async: true,
+        marker_options: {
+            startIcon: startIcon,
+            endIcon: endIcon
+        }
+    }).on('loaded', function(e) {
+
+
+
+     
+
+
+var commento = "-";
+
+fetch(file)
+    .then(response => response.text())
+    .then(xmlText => {
+
+        var parser = new DOMParser();
+        var xml = parser.parseFromString(xmlText, "text/xml");
+
+        // Cerchiamo qualsiasi <desc> dentro <trk>
+        var trk = xml.getElementsByTagName("trk")[0];
+
+        if (trk) {
+            var desc = trk.getElementsByTagName("desc")[0];
+            if (desc && desc.textContent.trim() !== "") {
+                commento = desc.textContent.trim();
+
+window["descrizione_" + index] = commento;
+
+            }
+        }
+
+        creaPopup(); // creiamo il popup SOLO dopo aver letto il commento
+    });
+
+
+
+
+
+
+
+
+
+   var titolo = e.target.get_name() || "Escursione";
+        var distanza = (e.target.get_distance() / 1000).toFixed(2);
+        var ascesa = e.target.get_elevation_gain().toFixed(0);
+var discesa = e.target.get_elevation_loss().toFixed(0);
+
+
+        var points = e.target.get_elevation_data();
+        var distData = [];
+        var elevData = [];
+
+        var totalDist = 0;
+
+        for (var i = 0; i < points.length; i++) {
+            totalDist = points[i][0] / 1;
+            distData.push(totalDist.toFixed(2));
+            elevData.push(points[i][1]);
+        }
+
+
+
+
+
+
+
+        var chartId = "chart" + index;
+
+	var startTime = e.target.get_start_time();
+	var endTime = e.target.get_end_time();	
+
+
+function formatDate(d) {
+    if (!d) return "-";
+    return d.toLocaleDateString() + " " + d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+}
+
+
+var elevationData = e.target.get_elevation_data();
+
+var altStart = "-";
+var altEnd = "-";
+
+if (elevationData && elevationData.length > 0) {
+    altStart = elevationData[0][1].toFixed(0);
+    altEnd = elevationData[elevationData.length - 1][1].toFixed(0);
+}
+
+
+function creaPopup() {
+
+    var popupContent = `
+        <div class="popup-title">${titolo}</div>
+    
+
+<div>
+    <a href="#" onclick="mostraDescrizione(${index}); return false;">
+        📖 Leggi descrizione
+    </a>
+</div>
+
+
+        <div>🕒 Inizio: ${formatDate(startTime)} 📍 q. ${altStart} m</div>
+        <div>🕒 Fine: ${formatDate(endTime)} 🏁 q. ${altEnd} m</div>
+
+        📏 Distanza: ${distanza} km<br>
+
+        <div class="elevation-highlight">
+            ⛰ Ascesa: ${ascesa} m
+        </div>
+
+        <div>⬇ Discesa: ${discesa} m</div>
+
+
+
+        <canvas id="${chartId}" width="250" height="120"></canvas>
+        <br>
+        <a href="${file}" download>⬇ Scarica GPX</a>
+    `;
+
+    e.target.bindPopup(popupContent);
+}
+
+
+        e.target.on("popupopen", function() {
+
+            new Chart(document.getElementById(chartId), {
+                type: 'line',
+                data: {
+                    labels: distData,
+                    datasets: [{
+                        data: elevData,
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.2
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+
+
+
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Distanza (km)' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Altitudine (m)' }
+                        }
+                    }
+                }
+            });
+
+        });
+
+    }).addTo(map);
+
+});
+
+</script>
+
+</body>
+</html>

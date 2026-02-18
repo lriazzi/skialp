@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="GDAL 3.5.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata><bounds minlat="46.664473999999998" minlon="11.301079100000001" maxlat="46.684223099999997" maxlon="11.310172400000001"/></metadata>                  
+<wpt lat="46.6654388" lon="11.305172">
+  <ele>1748.0</ele>
+</wpt>
+<trk>
+  <name>50202 - Großer Mittager (Obermarchen)</name>
+  <cmt>Skitourenguru übernimmt hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der bereitgestellten Daten keine Gewährleistung. Skitourenguru behält sich ausdrücklich vor, jederzeit Inhalte ohne Ankündigung ganz oder teilweise zu ändern, zu löschen oder zeitweise nicht zu veröffentlichen. Haftungsansprüche gegen Skitourenguru wegen Schäden materieller oder immaterieller Art, welche aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der zur bereitgestellten Daten, durch Missbrauch der Verbindung oder durch technische Störungen entstanden sind, werden ausgeschlossen. Skitourenguru (© 2023).</cmt>
+  <trkseg>
+    <trkpt lat="46.664503" lon="11.3078289">
+        <ele>1683.0</ele>
+    </trkpt>
+    <trkpt lat="46.664474" lon="11.307402">
+        <ele>1687.0</ele>
+    </trkpt>
+    <trkpt lat="46.6645007" lon="11.3073415">
+        <ele>1688.0</ele>
+    </trkpt>
+    <trkpt lat="46.664544" lon="11.3073341">
+        <ele>1690.0</ele>
+    </trkpt>
+    <trkpt lat="46.6646053" lon="11.3075098">
+        <ele>1691.0</ele>
+    </trkpt>
+    <trkpt lat="46.6647759" lon="11.3076929">
+        <ele>1694.0</ele>
+    </trkpt>
+    <trkpt lat="46.6648537" lon="11.3078431">
+        <ele>1697.0</ele>
+    </trkpt>
+    <trkpt lat="46.664889" lon="11.30815">
+        <ele>1701.0</ele>
+    </trkpt>
+    <trkpt lat="46.664946" lon="11.3083341">
+        <ele>1703.0</ele>
+    </trkpt>
+    <trkpt lat="46.664851" lon="11.308723">
+        <ele>1706.0</ele>
+    </trkpt>
+    <trkpt lat="46.664871" lon="11.308826">
+        <ele>1709.0</ele>
+    </trkpt>
+    <trkpt lat="46.664917" lon="11.308812">
+        <ele>1710.0</ele>
+    </trkpt>
+    <trkpt lat="46.665129" lon="11.308426">
+        <ele>1714.0</ele>
+    </trkpt>
+    <trkpt lat="46.665173" lon="11.307966">
+        <ele>1719.0</ele>
+    </trkpt>
+    <trkpt lat="46.665261" lon="11.307623">
+        <ele>1722.0</ele>
+    </trkpt>
+    <trkpt lat="46.6655709" lon="11.3070483">
+        <ele>1729.0</ele>
+    </trkpt>
+    <trkpt lat="46.6656209" lon="11.3069009">
+        <ele>1732.0</ele>
+    </trkpt>
+    <trkpt lat="46.6656203" lon="11.3067171">
+        <ele>1734.0</ele>
+    </trkpt>
+    <trkpt lat="46.6655838" lon="11.3064466">
+        <ele>1736.0</ele>
+    </trkpt>
+    <trkpt lat="46.6654191" lon="11.3059359">
+        <ele>1742.0</ele>
+    </trkpt>
+    <trkpt lat="46.6652714" lon="11.3056391">
+        <ele>1745.0</ele>
+    </trkpt>
+    <trkpt lat="46.6652427" lon="11.30551">
+        <ele>1743.0</ele>
+    </trkpt>
+    <trkpt lat="46.665266" lon="11.3054134">
+        <ele>1744.0</ele>
+    </trkpt>
+    <trkpt lat="46.6658124" lon="11.3046499">
+        <ele>1757.0</ele>
+    </trkpt>
+    <trkpt lat="46.6662911" lon="11.3034925">
+        <ele>1775.0</ele>
+    </trkpt>
+    <trkpt lat="46.6664212" lon="11.3032541">
+        <ele>1781.0</ele>
+    </trkpt>
+    <trkpt lat="46.6665474" lon="11.3031631">
+        <ele>1784.0</ele>
+    </trkpt>
+    <trkpt lat="46.6672628" lon="11.3030785">
+        <ele>1813.0</ele>
+    </trkpt>
+    <trkpt lat="46.6673263" lon="11.3030876">
+        <ele>1816.0</ele>
+    </trkpt>
+    <trkpt lat="46.6674114" lon="11.3032758">
+        <ele>1823.0</ele>
+    </trkpt>
+    <trkpt lat="46.6676851" lon="11.3043509">
+        <ele>1855.0</ele>
+    </trkpt>
+    <trkpt lat="46.6678632" lon="11.3046524">
+        <ele>1864.0</ele>
+    </trkpt>
+    <trkpt lat="46.670054" lon="11.306541">
+        <ele>1941.0</ele>
+    </trkpt>
+    <trkpt lat="46.670614" lon="11.306799">
+        <ele>1961.0</ele>
+    </trkpt>
+    <trkpt lat="46.670967" lon="11.3068839">
+        <ele>1974.0</ele>
+    </trkpt>
+    <trkpt lat="46.6717426" lon="11.3068159">
+        <ele>2000.0</ele>
+    </trkpt>
+    <trkpt lat="46.6724636" lon="11.3064516">
+        <ele>2011.0</ele>
+    </trkpt>
+    <trkpt lat="46.6730234" lon="11.305925">
+        <ele>2012.0</ele>
+    </trkpt>
+    <trkpt lat="46.6759292" lon="11.3039304">
+        <ele>2105.0</ele>
+    </trkpt>
+    <trkpt lat="46.678682" lon="11.302271">
+        <ele>2142.0</ele>
+    </trkpt>
+    <trkpt lat="46.6793" lon="11.302099">
+        <ele>2156.0</ele>
+    </trkpt>
+    <trkpt lat="46.67983" lon="11.301756">
+        <ele>2167.0</ele>
+    </trkpt>
+    <trkpt lat="46.680242" lon="11.301606">
+        <ele>2177.0</ele>
+    </trkpt>
+    <trkpt lat="46.680713" lon="11.301262">
+        <ele>2190.0</ele>
+    </trkpt>
+    <trkpt lat="46.6816188" lon="11.3010791">
+        <ele>2216.0</ele>
+    </trkpt>
+    <trkpt lat="46.6820313" lon="11.3011554">
+        <ele>2226.0</ele>
+    </trkpt>
+    <trkpt lat="46.6829396" lon="11.3018256">
+        <ele>2257.0</ele>
+    </trkpt>
+    <trkpt lat="46.6832319" lon="11.3022433">
+        <ele>2266.0</ele>
+    </trkpt>
+    <trkpt lat="46.6838644" lon="11.3045787">
+        <ele>2320.0</ele>
+    </trkpt>
+    <trkpt lat="46.6841546" lon="11.3097307">
+        <ele>2418.0</ele>
+    </trkpt>
+    <trkpt lat="46.6842231" lon="11.3101724">
+        <ele>2422.0</ele>
+    </trkpt>
+  </trkseg>
+</trk>
+</gpx>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<gpx version="1.1" creator="Locus Map, Android"
+ xmlns="http://www.topografix.com/GPX/1/1"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"
+ xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3"
+ xmlns:gpxtrkx="http://www.garmin.com/xmlschemas/TrackStatsExtension/v1"
+ xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v2"
+ xmlns:locus="https://www.locusmap.app">
+	<metadata>
+		<desc>File with points/tracks from Locus Map/4.32.4</desc>
+		<time>2026-02-17T21:53:52.368Z</time>
+	</metadata>
+<trk>
+	<name>2026-02-17 22:06</name>
+<desc><![CDATA[Macchia cane bello]]></desc>
+	<extensions>
+		<line xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+			<color>0000FF</color>
+			<opacity>0.70</opacity>
+			<width>6.0</width>
+			<extensions>
+				<locus:lsColorBase>#B30000FF</locus:lsColorBase>
+				<locus:lsWidth>6.0</locus:lsWidth>
+				<locus:lsUnits>PIXELS</locus:lsUnits>
+			</extensions>
+		</line>
+		<locus:activity>walking</locus:activity>
+	</extensions>
+<trkseg>
+<trkpt lat="44.5645758" lon="10.7441057">
+	<ele>169.15</ele>
+	<time>2026-02-17T21:06:39.000Z</time>
+	<hdop>3.79</hdop>
+	<extensions>
+		<gpxtpx:TrackPointExtension>
+			<gpxtpx:course>134.8</gpxtpx:course>
+		</gpxtpx:TrackPointExtension>
+	</extensions>
+</trkpt>
+<trkpt lat="44.5644353" lon="10.7441647">
+	<ele>166.24</ele>
+	<time>2026-02-17T21:06:49.000Z</time>
+	<hdop>3.79</hdop>
+	<extensions>
+		<gpxtpx:TrackPointExtension>
+			<gpxtpx:course>161.5</gpxtpx:course>
+		</gpxtpx:TrackPointExtension>
+	</extensions>
+</trkpt>
+<trkpt lat="44.5642891" lon="10.7442115">
+	<ele>162.74</ele>
+	<time>2026-02-17T21:06:59.000Z</time>
+	<hdop>3.79</hdop>
+	<extensions>
+		<gpxtpx:TrackPointExtension>
+			<gpxtpx:course>161.5</gpxtpx:course>
+		</gpxtpx:TrackPointExtension>
+	</extensions>
+</trkpt>
+<trkpt lat="44.5641460" lon="10.7442995">
+	<ele>162.76</ele>
+	<time>2026-02-17T21:07:09.000Z</time>
+	<hdop>3.79</hdop>
+	<extensions>
+		<gpxtpx:TrackPointExtension>
+			<gpxtpx:course>157.8</gpxtpx:course>
+		</gpxtpx:TrackPointExtension>
+	</extensions>
+</trkpt>
+<trkpt lat="44.5640129" lon="10.7443716">
+	<ele>160.86</ele>
+	<time>2026-02-17T21:07:19.000Z</time>
+	<hdop>3.79</hdop>
+	<extensions>
+		<gpxtpx:TrackPointExtension>
+			<gpxtpx:course>145.4</gpxtpx:course>
+		</gpxtpx:TrackPointExtension>
+	</extensions>
+</trkpt>
+<trkpt lat="44.5638864" lon="10.7444422">
+	<ele>158.95</ele>
+	<time>2026-02-17T21:07:29.000Z</time>
+	<hdop>3.79</hdop>
+	<extensions>
+		<gpxtpx:TrackPointExtension>
+			<gpxtpx:course>179.6</gpxtpx:course>
+		</gpxtpx:TrackPointExtension>
+	</extensions>
+</trkpt>
+</trkseg>
+</trk>
+</gpx>
